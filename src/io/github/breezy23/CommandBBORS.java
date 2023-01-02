@@ -1,6 +1,7 @@
 package io.github.breezy23;
 
 import io.github.breezy23.modifiers.Modifiers;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -12,9 +13,35 @@ public class CommandBBORS implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         HashMap<Modifiers, Boolean> modifiers = BBORS.data.mods;
 
-        modifiers.forEach((k, v) -> {
-            sender.sendMessage(k.toString()+" "+v.toString());
-        });
+        // Nested if hell
+        if(args.length > 0) {
+            Modifiers mod;
+            boolean modify = args.length == 2;
+
+            if(args[0].equalsIgnoreCase("lifelink")) {
+                mod = Modifiers.LIFELINK;
+            } else if(args[0].equalsIgnoreCase("lifeshare")) {
+                mod = Modifiers.LIFESHARE;
+            } else if(args[0].equalsIgnoreCase("invshare")) {
+                mod = Modifiers.INVSHARE;
+            } else{
+                sender.sendMessage(ChatColor.RED+"/BBORS <lifelink|lifeshare|invshare> [true|false] ");
+                return true;
+            }
+
+            if(!modify) {
+                sender.sendMessage(ChatColor.RED+mod.toString()+": "+modifiers.get(mod));
+            } else {
+                if(args[1].equals("true")) {
+                    modifiers.put(mod, true);
+                } else if(args[1].equals("false")) {
+                    modifiers.put(mod, false);
+                } else {
+                    sender.sendMessage(ChatColor.RED+"/BBORS "+args[0]+" [true|false]");
+                }
+            }
+        }
+
         return true;
     }
 }
