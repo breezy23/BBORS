@@ -1,0 +1,18 @@
+main: io.github.breezy23.BBORS
+name: BBORS
+version: 1.0
+description: A collection of random things that I wanted to make
+author: brz0323@gmail.com
+website: breezy23.github.io
+api-version: 1.19
+commands:
+  bbors:
+    description: Root command
+    aliases: bs
+    permission: BBORS.gamemode
+    permission-message: You must be OP to use this!
+    usage: "Usage: /<command> [gm]"
+permissions:
+  BBORS.gamemode:
+    description: Allows a user to change the gamemode
+    default: op
