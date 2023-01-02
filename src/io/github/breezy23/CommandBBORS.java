@@ -34,12 +34,15 @@ public class CommandBBORS implements CommandExecutor {
             } else {
                 if(args[1].equals("true")) {
                     modifiers.put(mod, true);
+                    sender.sendMessage(BBORS.data.mods.get(mod).toString());
                 } else if(args[1].equals("false")) {
                     modifiers.put(mod, false);
                 } else {
                     sender.sendMessage(ChatColor.RED+"/BBORS "+args[0]+" [true|false]");
                 }
             }
+        } else {
+            sender.sendMessage(ChatColor.RED+"/BBORS <lifelink|lifeshare|invshare> [true|false] ");
         }
 
         return true;

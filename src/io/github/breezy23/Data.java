@@ -68,7 +68,7 @@ public class Data implements Serializable {
         File file = new File("BBORS.data");
 
         // Call save() to create blank data
-        if(file.exists()) { save(); }
+        if(!file.exists()) { save(); }
 
         Data data = new Data(Data.loadData("BBORS.data"));
 
