@@ -7,12 +7,12 @@ website: breezy23.github.io
 api-version: 1.19
 commands:
   bbors:
-    description: Root command
+    description: Command to acces BBORS functions
     aliases: bs
-    permission: BBORS.gamemode
+    permission: BBORS.modifers
     permission-message: You must be OP to use this!
-    usage: "Usage: /<command> [gm]"
+    usage: "Usage: /<command> [mod]"
 permissions:
-  BBORS.gamemode:
-    description: Allows a user to change the gamemode
+  BBORS.modifiers:
+    description: Allows a user to change modifiers
     default: op
